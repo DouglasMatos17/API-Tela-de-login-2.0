@@ -1,7 +1,7 @@
 import express from 'express'
 
 const app = express()
-
+//
 // Indicar para o express ler body como Json
 app.use(express.json())
 
