@@ -44,13 +44,20 @@ app.post('/selecoes', (req, res) => {
     res.status(201).send('Seleção cadastrada com sucesso!')
 })
 
+// Deleta uma seleção com base do id
 app.delete('/selecoes/:id', (req, res) => {
     let index = buscaIndexSelecao(req.params.id)
     selecoes.splice(index, 1)
     res.send(`Seleção com id ${req.params.id} excluida com sucesso!`)
 })
 
-
+// Altera valores das seleções baseada no id
+app.put('/selecoes/:id', (req, res) => {
+    let index = buscaIndexSelecao(req.params.id)
+    selecoes[index].selecao = req.body.selecao
+    selecoes[index].grupo = req.body.grupo
+    res.json(selecoes)
+})
 
 
 export default app
