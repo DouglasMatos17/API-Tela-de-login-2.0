@@ -20,6 +20,12 @@ app.get('/selecoes', (req, res) => {
     res.status(200).send(selecoes)
 })
 
+// Primeiro post, esta cadastrando uma nova seleção no ultimo indice do array selecoes.
+app.post('/selecoes', (req, res) => {
+    selecoes.push(req.body)
+    res.status(201).send('Seleção cadastrada com sucesso!')
+})
+
 
 
 
