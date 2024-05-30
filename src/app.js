@@ -13,8 +13,14 @@ const selecoes = [
     {id: 4, selecao: 'Sérvia', grupo: 'G' }
 ]
 
-function buscarSelecaoPorID(id) {
+// Retorna o objeto por id
+function buscarSelecaoPorId(id) {
     return selecoes.filter( selecao => selecao.id == id)
+}
+
+// Pegar posição ou index do elemento no array por id
+function buscaIndexSelecao(id){
+    return selecoes.findIndex(selecao => selecao.id == id)
 }
 
 // Criando rota padrão
@@ -29,13 +35,19 @@ app.get('/selecoes', (req, res) => {
 
 // Retorna objeto por ID
 app.get('/selecoes/:id', (req, res) => {
-    res.json(buscarSelecaoPorID(req.params.id))
+    res.json(buscarSelecaoPorId(req.params.id))
 })
 
 // Primeiro post, esta cadastrando uma nova seleção no ultimo indice do array selecoes.
 app.post('/selecoes', (req, res) => {
     selecoes.push(req.body)
     res.status(201).send('Seleção cadastrada com sucesso!')
+})
+
+app.delete('/selecoes/:id', (req, res) => {
+    let index = buscaIndexSelecao(req.params.id)
+    selecoes.splice(index, 1)
+    res.send(`Seleção com id ${req.params.id} excluida com sucesso!`)
 })
 
 
