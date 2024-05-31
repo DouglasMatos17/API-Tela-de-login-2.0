@@ -13,4 +13,8 @@ Passos para instalar as dependências e configurar o ambiente.
     ``npm install``
 
 ## Rodar localmente o servidor 
-``npm run dev``a
+1. get.
+    ``npm run dev``
+
+## Rotas
+
